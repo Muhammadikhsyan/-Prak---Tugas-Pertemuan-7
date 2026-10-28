@@ -3,8 +3,11 @@ package com.mycompany.smartlibrary7;
 public class BukuCetak extends Koleksi implements DapatDipinjam, DapatDinilai {
     private int jumlahHalaman;
 
-    public BukuCetak(String judul, String penulis, int tahunTerbit, int jumlahHalaman) {
+    public BukuCetak(String judul, String penulis, int tahunTerbit, int jumlahHalaman) throws Exception {
         super(judul, penulis, tahunTerbit);
+        if (jumlahHalaman < 0) {
+            throw new Exception("Jumlah halaman tidak boleh negatif.");
+        }
         this.jumlahHalaman = jumlahHalaman;
     }
 
@@ -27,19 +30,16 @@ public class BukuCetak extends Koleksi implements DapatDipinjam, DapatDinilai {
         System.out.println("Pinjam buku fisik ini langsung di meja sirkulasi.");
     }
 
-    // Wajib mengimplementasikan abstract method dari Abstract Class Koleksi
     @Override
     public void hitungDendaKeterlambatan() {
         System.out.println("-> Aturan Denda: Rp 2.000 / hari keterlambatan.");
     }
 
-    // Wajib mengimplementasikan method dari Interface DapatDipinjam
     @Override
     public void prosesPinjamFisik() {
         System.out.println("-> [PROSES PINJAM] Anggota menyerahkan buku fisik & kartu perpus ke Kasir.");
     }
 
-    // Wajib mengimplementasikan method dari Interface DapatDinilai
     @Override
     public void beriRating(int bintang) {
         System.out.println("-> [ULASAN BUKU] Buku fisik ini mendapat rating " + bintang + "/5 Bintang.");

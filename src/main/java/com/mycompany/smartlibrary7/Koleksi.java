@@ -1,14 +1,16 @@
 package com.mycompany.smartlibrary7;
 
 public abstract class Koleksi {
-    // Abstract class dapat mendeklarasikan variabel biasa (bisa diubah nilainya)
     private String judul;
     private String penulis;
     private int tahunTerbit;
 
     public static int totalKoleksi = 0;
 
-    public Koleksi(String judul, String penulis, int tahunTerbit) {
+    public Koleksi(String judul, String penulis, int tahunTerbit) throws Exception {
+        if (tahunTerbit < 0) {
+            throw new Exception("Tahun terbit tidak valid (tidak boleh nol atau negatif).");
+        }
         this.judul = judul;
         this.penulis = penulis;
         this.tahunTerbit = tahunTerbit;
@@ -39,7 +41,6 @@ public abstract class Koleksi {
         this.tahunTerbit = tahunTerbit;
     }
 
-    // Method biasa yang memiliki implementasi/blok logika
     public void tampilkanInfo() {
         System.out.println("Judul        : " + judul);
         System.out.println("Penulis      : " + penulis);
@@ -50,7 +51,5 @@ public abstract class Koleksi {
         System.out.println("Prosedur peminjaman standar perpustakaan.");
     }
 
-    // Abstract Method: Hanya deklarasi tanpa tubuh (tanpa kurung kurawal {})
-    // Menjadi aturan wajib yang harus di-override oleh seluruh Subclass
     public abstract void hitungDendaKeterlambatan();
 }
