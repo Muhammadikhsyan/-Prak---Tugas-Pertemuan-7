@@ -9,7 +9,7 @@ public abstract class Koleksi {
 
     public Koleksi(String judul, String penulis, int tahunTerbit) throws Exception {
         if (tahunTerbit < 0) {
-            throw new Exception("Tahun terbit tidak valid (tidak boleh nol atau negatif).");
+            throw new Exception("Tahun terbit tidak valid (tidak boleh negatif).");
         }
         this.judul = judul;
         this.penulis = penulis;
